@@ -70,6 +70,10 @@ class Profile(models.Model):
             total_liked += item.liked.all().count()
         return total_liked
 
+class RelationshipManager(models.Manager):
+    def invatations_received(self, receiver):
+        qs = Relationship.objects.filter(receiver=receiver, status='send')
+        return qs
 STATUS_CHOICES = (
     ('send', 'send'),
     ('accepted', 'accepted')
@@ -81,8 +85,11 @@ class Relationship(models.Model):
     status = models.CharField(max_length=8, choices=STATUS_CHOICES)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
+    objects = RelationshipManager()
 
  
 
     def __str__(self):
         return f"{self.sender}-{self.receiver}-{self.status}"
+
+    
