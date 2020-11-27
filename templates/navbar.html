@@ -1,10 +1,10 @@
 <div class="ui inverted menu">
     <div class="ui container">
       <a href="" class="item">
-          <h3>bffbook</h3>
+          <h3>SocialNetwork</h3>
       </a>
       {% if request.user.is_authenticated %}
-      <a href="" class="item">
+      <a href="{% url 'main-post-view' %}" class="item">
           Home
       </a>
       {% endif %}
@@ -15,13 +15,13 @@
               <div class="ui floating dropdown icon button teal"> Friends
                   <i class="dropdown icon"></i>
                   <div class="menu">
-                      <a href="" class="item">
+                      <a href="{% url 'all-profiles-view' %}" class="item">
                           All Profiles
                       </a>
                       <a href="" class="item">
                           Send Invites
                       </a>
-                      <a href="" class="item">
+                      <a href="{% url 'my-invites-view' %}" class="item">
                           Received Invites
                       </a>
                   </div>

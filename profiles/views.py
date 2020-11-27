@@ -117,7 +117,7 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
 class ProfileListView(LoginRequiredMixin, ListView):
     model = Profile
     template_name = 'profiles/profile_list.html'
-    # context_object_name = 'qs'
+    context_object_name = 'qs'
 
     def get_queryset(self):
         qs = Profile.objects.get_all_profiles(self.request.user)
