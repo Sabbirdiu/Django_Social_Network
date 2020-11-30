@@ -10,6 +10,8 @@ from profiles.models import Profile
 from .forms import PostModelForm, CommentModelForm
 
 # Create your views here.
+def index(request):
+    return render(request,'home.html')
 @login_required
 def post_comment_create_and_list_view(request):
     qs = Post.objects.all()
