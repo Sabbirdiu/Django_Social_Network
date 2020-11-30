@@ -4,8 +4,8 @@ from .views import post_comment_create_and_list_view, like_unlike_post,PostDelet
 
 
 urlpatterns = [
-    path('',index,name='home'),
-    path('main', post_comment_create_and_list_view, name='main-post-view'),
+    # path('',index,name='home'),
+    path('', post_comment_create_and_list_view, name='main-post-view'),
     path('liked/', like_unlike_post, name='like-post-view'),
     path('<pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('<pk>/update/', PostUpdateView.as_view(), name='post-update'),

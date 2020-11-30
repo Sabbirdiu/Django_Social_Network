@@ -1,6 +1,6 @@
 <div class="ui inverted menu  nav mb-7">
     <div class="ui container">
-      <a href="{% url 'home' %}" class="item">
+      <a href="" class="item">
           <h3>SocialNetwork</h3>
       </a>
       {% if request.user.is_authenticated %}
@@ -21,9 +21,9 @@
                       <a href="{% url 'invite-profiles-view' %}" class="item">
                           Send Invites
                       </a>
-                      <a href="{% url 'my-invites-view' %}" class="item">
-                          Received Invites
-                      </a>
+                      <a href="{{path_to_my_invites}}" class="{% if request.path == path_to_my_invites %}active{% endif %} item">
+                        Received Invites &nbsp; <div class="ui purple horizontal label">{{invites_num}}</div>
+                    </a>
                      
                   </div>
                </div>
@@ -38,10 +38,10 @@
               </form>
               </div>
           
-              <a href="{% url 'my-profile-view' %}" class="item">
-                   {{ request.user }}
-              </a>
-  
+              <a href="{{path_to_my_profile}}" class="{% if request.path == path_to_my_profile %}active{% endif %} item">
+                <img src={{picture.url}} class="ui avatar image">&nbsp;
+                 {{ request.user }}
+             </a>
               <a href="{% url 'account_logout' %}" class="ui item">
                   Logout
               </a>
