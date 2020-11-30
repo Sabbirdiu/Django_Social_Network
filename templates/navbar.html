@@ -1,4 +1,4 @@
-<div class="ui inverted menu">
+<div class="ui inverted menu  nav mb-7">
     <div class="ui container">
       <a href="" class="item">
           <h3>SocialNetwork</h3>
@@ -18,15 +18,13 @@
                       <a href="{% url 'all-profiles-view' %}" class="item">
                           All Profiles
                       </a>
-                      <a href="" class="item">
+                      <a href="{% url 'invite-profiles-view' %}" class="item">
                           Send Invites
                       </a>
                       <a href="{% url 'my-invites-view' %}" class="item">
                           Received Invites
                       </a>
-                      <a href="{% url 'invite-profiles-view' %}" class="item">
-                        All Request
-                    </a>
+                     
                   </div>
                </div>
           </div>

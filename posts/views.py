@@ -40,6 +40,8 @@ def post_comment_create_and_list_view(request):
             instance.post = Post.objects.get(id=request.POST.get('post_id'))
             instance.save()
             c_form = CommentModelForm()    
+   
+   
     context = {
         'qs': qs,
         'profile': profile,
@@ -76,6 +78,10 @@ def like_unlike_post(request):
 
             post_obj.save()
             like.save()
+
+  
+
+        return JsonResponse(data, safe=False)            
 
        
     return redirect('main-post-view')    

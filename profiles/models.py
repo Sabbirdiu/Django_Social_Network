@@ -105,7 +105,7 @@ class Profile(models.Model):
                 total_liked += 1
         return total_liked
 
-    def get_likes_recieved_no(self):
+    def get_likes_recieved_no(self): 
         posts = self.posts.all()
         total_liked = 0
         for item in posts:
