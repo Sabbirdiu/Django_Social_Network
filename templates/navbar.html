@@ -28,16 +28,35 @@
                      
                   </div>
                </div>
+               
           </div>
                <div class="item">
                 <form action="{% url 'search_results' %}" method="GET">
                   <div class="ui action left icon input">
-                  <input class="prompt" type="text" name='q' placeholder="name of a friend...">
+                  <input class="prompt" id="query" type="text" name='q' placeholder="name of a friend...">
                   <i class="search icon"></i>
                   <button type='submit' class="ui button">Search</button>
                   </div>
               </form>
               </div>
+              <script>
+
+                $(function() {
+                  $("#query").autocomplete({
+                    source: "/search_auto/",
+                    select: function (event, ui) { //item selected
+                      AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 2,
+                  });
+                });
+              
+                function AutoCompleteSelectHandler(event, ui)
+                {
+                  var selectedObj = ui.item;
+                }
+              
+              </script>
           
               <a href="{% url 'my-profile-view' %}" class="{% if request.path == path_to_my_profile %}active{% endif %} item">
                 <img src={{picture.url}} class="ui avatar image">&nbsp;

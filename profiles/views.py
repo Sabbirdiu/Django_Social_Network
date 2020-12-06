@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, request
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Relationship
 from posts.models import Post
@@ -8,6 +9,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from django.views.generic import ListView, DetailView,TemplateView
 from django.db.models import Q 
+import json
 
 # Create your views here.
 # def search(request):
@@ -27,7 +29,20 @@ def search(request):
     }
     return render(request, 'search_results.html', context)
 
-
+def search_auto(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    profile = Profile.objects.filter(first_name__icontains=q)
+    results = []
+    for pl in profile:
+      profile_json = {}
+      profile_json = pl.first_name 
+      results.append(profile_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
 @login_required
 def my_profile_view(request):
     profile = Profile.objects.get(user=request.user)

@@ -12,11 +12,13 @@ from .views import  (
     accept_invatation,
     reject_invatation,
     search,
+    search_auto,
     
 )
 
 urlpatterns = [
     path('search/',search,name='search_results'),
+    path('search_auto/', search_auto, name='search_auto'),
     path('myprofile/', my_profile_view, name='my-profile-view'),
     path('my-invites/', invites_received_view, name='my-invites-view'),
     path('to-invite/', invite_profiles_list_view, name='invite-profiles-view'),
