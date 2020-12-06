@@ -9,8 +9,27 @@
 <h2 class='text-primary mb-3 mt-3 border-info border-bottom border-height-3 pb-2'>This is the results of your search</h2>
 
 {% for post in queryset %}
-    <a class="text-decoration-none reset-ancho  " href="{{ post.get_absolute_url }}">{{ post.content }}</a>
+    <a class="text-decoration-none reset-ancho  " href="{{ post.get_absolute_url }}"> </a>
     <br />
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="row">
+                <div class="three wide column">
+                    <img class="ui small circular image" src={{post.avatar.url}}>
+                </div>
+                <div class="thirteen wide column">
+                    <h3>{{ post.first_name }}  {{ post.last_name }} </h3>
+                    <!-- <p>{{obj.bio}}</p> -->
+                    <a href={{post.get_absolute_url}}><button class="ui primary button mb-5 w-big">See profile</button></a>
+                    <br>
+
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
 {% endfor %}
 </div>
  <!-- Blog listing-->

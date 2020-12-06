@@ -13,11 +13,12 @@ from django.db.models import Q
 # def search(request):
 #     return render(request,'search_results.html')
 def search(request):
-    queryset = Post.objects.all()
+    queryset = Profile.objects.all()
     query = request.GET.get('q')
     if query:
         queryset = queryset.filter(
-            Q(content__icontains=query) 
+            Q(first_name__icontains=query) |
+             Q(last_name__icontains=query) 
            
         ).distinct()
     context = {
