@@ -1,13 +1,31 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Relationship
+from posts.models import Post
 from .forms import ProfileModelForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.db.models import Q
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView,TemplateView
+from django.db.models import Q 
 
 # Create your views here.
+# def search(request):
+#     return render(request,'search_results.html')
+def search(request):
+    queryset = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset = queryset.filter(
+            Q(content__icontains=query) 
+           
+        ).distinct()
+    context = {
+        'queryset': queryset,
+        'query':query
+    }
+    return render(request, 'search_results.html', context)
+
 
 @login_required
 def my_profile_view(request):

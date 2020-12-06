@@ -11,10 +11,12 @@ from .views import  (
     remove_from_friends,
     accept_invatation,
     reject_invatation,
+    search,
+    
 )
 
 urlpatterns = [
-    # path('profile/',my_profile_view),
+    path('search/',search,name='search_results'),
     path('myprofile/', my_profile_view, name='my-profile-view'),
     path('my-invites/', invites_received_view, name='my-invites-view'),
     path('to-invite/', invite_profiles_list_view, name='invite-profiles-view'),
@@ -24,5 +26,6 @@ urlpatterns = [
     path('<slug>/', ProfileDetailView.as_view(), name='profile-detail-view'),
     path('my-invites/acctept/', accept_invatation, name='accept-invite'),
     path('my-invites/reject/', reject_invatation, name='reject-invite'),
+    # path('search/', SearchResultsView.as_view(), name='search_results'),
  
 ]

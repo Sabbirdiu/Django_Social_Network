@@ -21,7 +21,8 @@
                       <a href="{% url 'invite-profiles-view' %}" class="item">
                           Send Invites
                       </a>
-                      <a href="{{path_to_my_invites}}" class="{% if request.path == path_to_my_invites %}active{% endif %} item">
+        
+                      <a href="{% url 'my-invites-view' %}" class="{% if request.path == path_to_my_invites %}active{% endif %} item">
                         Received Invites &nbsp; <div class="ui purple horizontal label">{{invites_num}}</div>
                     </a>
                      
@@ -29,7 +30,7 @@
                </div>
           </div>
                <div class="item">
-                <form action="" method="GET">
+                <form action="{% url 'search_results' %}" method="GET">
                   <div class="ui action left icon input">
                   <input class="prompt" type="text" name='q' placeholder="name of a friend...">
                   <i class="search icon"></i>
@@ -38,10 +39,10 @@
               </form>
               </div>
           
-              <a href="{{path_to_my_profile}}" class="{% if request.path == path_to_my_profile %}active{% endif %} item">
+              <a href="{% url 'my-profile-view' %}" class="{% if request.path == path_to_my_profile %}active{% endif %} item">
                 <img src={{picture.url}} class="ui avatar image">&nbsp;
                  {{ request.user }}
-             </a>
+            </a>
               <a href="{% url 'account_logout' %}" class="ui item">
                   Logout
               </a>
