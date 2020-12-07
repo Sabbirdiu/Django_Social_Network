@@ -20,7 +20,7 @@ def search(request):
     if query:
         queryset = queryset.filter(
             Q(first_name__icontains=query) |
-             Q(last_name__icontains=query) 
+            Q(last_name__icontains=query) 
            
         ).distinct()
     context = {
